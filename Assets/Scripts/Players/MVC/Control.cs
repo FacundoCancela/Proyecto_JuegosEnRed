@@ -20,7 +20,7 @@ public class Control : MonoBehaviour, IControl
 
     public void GetInputs()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             _playerModel.Jump();
         }
