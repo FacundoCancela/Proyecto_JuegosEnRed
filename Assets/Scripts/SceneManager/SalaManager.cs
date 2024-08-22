@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class SalaManager : MonoBehaviour
 {
     public static SalaManager instance;
+    [SerializeField] GameObject _gameplayCanvas;
+    [SerializeField] GameObject _menuCanvas;
+    [SerializeField] GameObject _instructionsCanvas;
 
     public TMP_InputField inputFieldTMP;
     private List<string> codigosDeSala = new List<string>();
@@ -28,6 +31,10 @@ public class SalaManager : MonoBehaviour
 
     private void Start()
     {
+        _gameplayCanvas.SetActive(false);
+        _menuCanvas.SetActive(true);
+        _instructionsCanvas.SetActive(false);
+
         AsignarBotones();
     }
 
@@ -65,7 +72,7 @@ public class SalaManager : MonoBehaviour
             unirseASalaButton.onClick.AddListener(UnirseASala);
         }
 
-        // Asigna también el inputField por su nombre
+        // Asigna tambiï¿½n el inputField por su nombre
         inputFieldTMP = GameObject.Find("InputFieldCodigoSala")?.GetComponent<TMP_InputField>();
     }
 
@@ -88,4 +95,37 @@ public class SalaManager : MonoBehaviour
             Debug.Log("La sala no existe");
         }
     }
+
+    public void GoMenu()
+    {
+        if(_gameplayCanvas != null)
+        {
+            _gameplayCanvas.SetActive(false);
+            _menuCanvas.SetActive(true);
+        }
+        if(_instructionsCanvas != null)
+        {
+            _instructionsCanvas.SetActive(false);
+            _menuCanvas.SetActive(true);
+        }
+    }
+    
+    #region MainMenu_Methods
+    public void Play()
+    {
+        _menuCanvas.SetActive(false);
+        _gameplayCanvas.SetActive(true);
+    }
+
+    public void Instrutions()
+    {
+        _menuCanvas.SetActive(false);
+        _instructionsCanvas.SetActive(true);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+    #endregion
 }
