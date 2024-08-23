@@ -35,8 +35,8 @@ public class Actor : MonoBehaviour, IActor
 
         if (isGrounded)
         {
+            Debug.Log("salta");
             _rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            Debug.Log("SALTO");
         }
     }
 }

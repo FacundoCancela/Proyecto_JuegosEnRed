@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 831526429}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SalaManager, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
@@ -1659,30 +1659,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 831526430}
-  - component: {fileID: 831526429}
+  - component: {fileID: 831526431}
   m_Layer: 0
-  m_Name: SalaManager
+  m_Name: MenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &831526429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831526428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf5c976693b4f0a498cd6afd51e656be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameplayCanvas: {fileID: 0}
-  _menuCanvas: {fileID: 0}
-  _instructionsCanvas: {fileID: 0}
-  inputFieldTMP: {fileID: 144337271}
 --- !u!4 &831526430
 Transform:
   m_ObjectHideFlags: 0
@@ -1698,6 +1682,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &831526431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831526428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 564b653ad507f494585690734c369051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createButton: {fileID: 1436038114}
+  joinButton: {fileID: 2082942479}
+  createInput: {fileID: 144337271}
+  joinInput: {fileID: 144337271}
 --- !u!1 &924545755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,7 +2117,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 831526429}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SalaManager, Assembly-CSharp
         m_MethodName: GoMenu
         m_Mode: 1
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 831526429}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SalaManager, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
@@ -3173,7 +3173,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 831526429}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SalaManager, Assembly-CSharp
         m_MethodName: GoMenu
         m_Mode: 1
@@ -3582,7 +3582,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 831526429}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SalaManager, Assembly-CSharp
         m_MethodName: Instrutions
         m_Mode: 1
