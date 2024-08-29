@@ -1,6 +1,8 @@
 using Photon.Pun;
+using Photon.Pun.Demo.PunBasics;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Control : MonoBehaviour, IControl
@@ -24,6 +26,15 @@ public class Control : MonoBehaviour, IControl
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (pv.IsMine && collision.transform.CompareTag("Coin"))
+        {
+            PhotonView photonView = PhotonView.Get(this);
+            photonView.RPC("CollectCoin", RpcTarget.AllBuffered, collision.gameObject.GetComponent<PhotonView>().ViewID);
+        }
+    }
+
     public void GetInputs()
     {
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -35,4 +46,16 @@ public class Control : MonoBehaviour, IControl
         Vector2 dir = new Vector2(x, 0).normalized;
         _playerModel.Move(dir);
     }
+
+    [PunRPC]
+    void CollectCoin(int coinViewID)
+    {
+        PhotonView coinPhotonView = PhotonView.Find(coinViewID);
+        if (coinPhotonView != null)
+        {
+            PhotonNetwork.Destroy(coinPhotonView);
+            GameManager.Instance.CollectCoin();
+        }
+    }
+
 }

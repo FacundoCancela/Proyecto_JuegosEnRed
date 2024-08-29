@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private Transform spawnPoint;
 
     private GameObject player;
     private PhotonView pv;
@@ -17,7 +16,23 @@ public class PlayerSpawn : MonoBehaviour
 
     private void Start()
     {
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position , Quaternion.identity);
+        player = PhotonNetwork.Instantiate(playerPrefab.name,
+                            new Vector2(Random.Range(-4, 4), Random.Range(-4, 4)),
+                            Quaternion.identity);
+
+        int playerIndex = PhotonNetwork.PlayerList.Length;
+
+        pv.RPC("ChangeColor", RpcTarget.AllBuffered, player.GetComponent<PhotonView>().ViewID, playerIndex);
     }
 
+    [PunRPC]
+    private void ChangeColor(int playerViewID, int playerIndex)
+    {
+        PhotonView targetPhotonView = PhotonView.Find(playerViewID);
+
+        if (targetPhotonView != null)
+        {
+            targetPhotonView.gameObject.GetComponent<SpriteRenderer>().color = (playerIndex == 1) ? Color.red : Color.blue;
+        }
+    }
 }

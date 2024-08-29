@@ -31,11 +31,8 @@ public class Actor : MonoBehaviour, IActor
 
     public void Jump()
     {
-        Debug.Log("no toca el piso");
-
         if (isGrounded)
         {
-            Debug.Log("salta");
             _rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
