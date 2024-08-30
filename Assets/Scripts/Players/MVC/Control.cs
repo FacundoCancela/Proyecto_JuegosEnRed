@@ -50,11 +50,18 @@ public class Control : MonoBehaviour, IControl
     [PunRPC]
     void CollectCoin(int coinViewID)
     {
+        GameManager.Instance.CollectCoin();
+
         PhotonView coinPhotonView = PhotonView.Find(coinViewID);
         if (coinPhotonView != null)
         {
-            PhotonNetwork.Destroy(coinPhotonView);
-            GameManager.Instance.CollectCoin();
+            
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.Destroy(coinPhotonView.gameObject);
+
+            }
         }
     }
 

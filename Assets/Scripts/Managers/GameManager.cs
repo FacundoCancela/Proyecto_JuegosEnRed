@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TextMeshProUGUI text;
     public static GameManager Instance;
 
-
     [SerializeField] PhotonView pv;
     private int count = 0;
 
@@ -41,14 +40,12 @@ public class GameManager : MonoBehaviour
     [PunRPC]
     public void CollectCoin()
     {
-        if (pv.IsMine)
-        {
-            count++;
-            pv.RPC("UpdateCoinText", RpcTarget.AllBuffered, count);
-        }
+
+        count++;
+        Debug.Log("monedas:" + count);
+        UpdateCoinText(count);
     }
 
-    [PunRPC]
     private void UpdateCoinText(int updatedCount)
     {
         text.text = "Monedas: " + updatedCount;
