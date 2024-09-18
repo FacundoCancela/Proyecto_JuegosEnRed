@@ -56,11 +56,9 @@ public class Control : MonoBehaviour, IControl
         if (coinPhotonView != null)
         {
             
-
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Destroy(coinPhotonView.gameObject);
-
             }
         }
     }

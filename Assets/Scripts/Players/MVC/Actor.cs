@@ -7,11 +7,13 @@ public class Actor : MonoBehaviour, IActor
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private LayerMask groundLayer; 
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.1f;
 
-    private bool isGrounded;
+    private bool isGrounded = true;
+    private bool canJump = true;
+
 
     private void Awake()
     {
@@ -21,6 +23,10 @@ public class Actor : MonoBehaviour, IActor
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        if (isGrounded)
+        {
+            canJump = true;
+        }
     }
 
     public void Move(Vector2 dir)
@@ -31,8 +37,12 @@ public class Actor : MonoBehaviour, IActor
 
     public void Jump()
     {
-        if (isGrounded)
+        if (canJump)
         {
+            if (!isGrounded)
+            {
+                canJump = false;
+            }
             _rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }

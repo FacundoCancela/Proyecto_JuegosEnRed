@@ -44,6 +44,7 @@ MonoBehaviour:
   - ChangeColor
   - CollectCoin
   - UpdateCoinText
+  - SpawnPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
