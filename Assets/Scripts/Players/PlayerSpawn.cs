@@ -17,9 +17,14 @@ public class PlayerSpawn : MonoBehaviour
 
     private void Start()
     {
-        int playerIndex = PhotonNetwork.PlayerList.Length;
+        int playerIndex = GetPlayerIndex();
         SpawnPlayer(playerIndex);
         pv.RPC("ChangeColor", RpcTarget.AllBuffered, player.GetComponent<PhotonView>().ViewID, playerIndex);
+    }
+
+    private int GetPlayerIndex()
+    {
+        return PhotonNetwork.LocalPlayer.ActorNumber - 1;
     }
 
     [PunRPC]
@@ -29,16 +34,16 @@ public class PlayerSpawn : MonoBehaviour
 
         if (targetPhotonView != null)
         {
-            targetPhotonView.gameObject.GetComponent<SpriteRenderer>().color = (playerIndex == 1) ? Color.red : Color.blue;
+            targetPhotonView.gameObject.GetComponent<SpriteRenderer>().color = (playerIndex == 0) ? Color.red : Color.blue;
         }
     }
 
     private void SpawnPlayer(int playerIndex)
     {
+        int spawnIndex = Mathf.Clamp(playerIndex, 0, spawnPoints.Count - 1);
+
         player = PhotonNetwork.Instantiate(playerPrefab.name,
-                        spawnPoints[playerIndex - 1].position,
+                        spawnPoints[spawnIndex].position,
                         Quaternion.identity);
     }
-
-
 }

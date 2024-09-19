@@ -8,9 +8,14 @@ public class SceneChanger : MonoBehaviourPunCallbacks
 {
     public void ChangeScene()
     {
-        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("LevelSelector");
     }
 
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+
+    }
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene("MainMenu");

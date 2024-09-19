@@ -9,8 +9,7 @@ public class MenuUI : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Button createButton;
     [SerializeField] private Button joinButton;
-    [SerializeField] private TMPro.TMP_InputField createInput;
-    [SerializeField] private TMPro.TMP_InputField joinInput;
+    [SerializeField] private TMPro.TMP_InputField roomInput;
 
     private void Awake()
     {
@@ -28,17 +27,17 @@ public class MenuUI : MonoBehaviourPunCallbacks
     {
         RoomOptions roomConfiguration = new RoomOptions();
         roomConfiguration.MaxPlayers = 2;
-        PhotonNetwork.CreateRoom(createInput.text, roomConfiguration);
+        PhotonNetwork.CreateRoom(roomInput.text, roomConfiguration);
     }
 
     private void JoinRoom()
     {
-        PhotonNetwork.JoinRoom(joinInput.text);
+        PhotonNetwork.JoinRoom(roomInput.text);
     }
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("FirstLevel");
+        PhotonNetwork.LoadLevel("LevelSelector");
     }
 
 }
