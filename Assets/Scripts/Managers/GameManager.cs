@@ -18,8 +18,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] public List<GameObject> coins;
     [SerializeField] public int coinsToWin;
 
+    [SerializeField] public int lifes;
+    [SerializeField] private List<GameObject> hearts;
+
     [SerializeField] public TextMeshProUGUI text;
     [SerializeField] public Canvas winScreen;
+    [SerializeField] public Canvas loseScreen;
+
+    public bool isGamePaused = false;
+
 
     private void Awake()
     {
@@ -41,7 +48,32 @@ public class GameManager : MonoBehaviour
     {
         UpdateCoinText(count);
         coinsToWin = coins.Count;
+        UpdateHearts();
     }
+
+    public void LoseHealth()
+    {
+        lifes--;
+        pv.RPC("UpdateHearts", RpcTarget.AllBuffered);
+        CheckLose();
+    }
+
+    [PunRPC]
+    public void UpdateHearts()
+    {
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            if (i < lifes)
+            {
+                hearts[i].SetActive(true);
+            }
+            else
+            {
+                hearts[i].SetActive(false);
+            }
+        }
+    }
+
 
 
     [PunRPC]
@@ -70,11 +102,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void CheckLose()
+    {
+        if(lifes <= 0)
+        {
+            pv.RPC("Lose", RpcTarget.AllBuffered);
+        }
+        else Debug.Log("vidas restantes: " + lifes);
+    }
+
+
     [PunRPC]
     private void Win()
     {
         Debug.Log("ganaste");
+        isGamePaused = true;
         winScreen.gameObject.SetActive(true);
     }
+
+    [PunRPC]
+    private void Lose()
+    {
+        Debug.Log("perdiste");
+        isGamePaused = true;
+        loseScreen.gameObject.SetActive(true);
+    }
+
 
 }

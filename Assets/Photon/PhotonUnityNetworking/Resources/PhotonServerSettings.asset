@@ -48,6 +48,8 @@ MonoBehaviour:
   - RPC_LoadLevel
   - LoadLevel
   - Win
+  - Lose
+  - UpdateHearts
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

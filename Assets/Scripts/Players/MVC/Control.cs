@@ -20,26 +20,13 @@ public class Control : MonoBehaviour, IControl
 
     private void Update()
     {
-        if(pv.IsMine)
+        if (!pv.IsMine || GameManager.Instance.isGamePaused)
         {
-            GetInputs();
+            return;
         }
+
+        GetInputs();
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (pv.IsMine && collision.transform.CompareTag("Coin"))
-        {
-            PhotonView photonView = PhotonView.Get(this);
-            photonView.RPC("CollectCoin", RpcTarget.AllBuffered, collision.gameObject.GetComponent<PhotonView>().ViewID);
-        }
-
-        if(pv.IsMine && collision.transform.CompareTag("WinDoor"))
-        {
-            GameManager.Instance.CheckWin();
-        }
-    }
-
     public void GetInputs()
     {
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -51,21 +38,4 @@ public class Control : MonoBehaviour, IControl
         Vector2 dir = new Vector2(x, 0).normalized;
         _playerModel.Move(dir);
     }
-
-    [PunRPC]
-    void CollectCoin(int coinViewID)
-    {
-        GameManager.Instance.CollectCoin();
-
-        PhotonView coinPhotonView = PhotonView.Find(coinViewID);
-        if (coinPhotonView != null)
-        {
-            
-            if (PhotonNetwork.IsMasterClient)
-            {
-                PhotonNetwork.Destroy(coinPhotonView.gameObject);
-            }
-        }
-    }
-
 }
