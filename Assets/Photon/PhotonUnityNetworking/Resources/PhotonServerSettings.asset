@@ -47,6 +47,7 @@ MonoBehaviour:
   - SpawnPlayer
   - RPC_LoadLevel
   - LoadLevel
+  - Win
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

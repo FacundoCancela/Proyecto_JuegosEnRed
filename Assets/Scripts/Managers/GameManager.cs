@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Pun.Demo.SlotRacer;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Realtime;
 
 
 public class GameManager : MonoBehaviour
@@ -50,7 +51,6 @@ public class GameManager : MonoBehaviour
         coinsToWin--;
         Debug.Log("monedas:" + count);
         UpdateCoinText(count);
-        CheckWin();
     }
 
     private void UpdateCoinText(int updatedCount)
@@ -58,14 +58,19 @@ public class GameManager : MonoBehaviour
         text.text = "Monedas: " + updatedCount;
     }
 
-    private void CheckWin()
+    public void CheckWin()
     {
         if (coinsToWin <= 0)
         {
-            Win();
+            pv.RPC("Win", RpcTarget.AllBuffered);
+        }
+        else
+        {
+            Debug.Log("te faltan monedas");
         }
     }
 
+    [PunRPC]
     private void Win()
     {
         Debug.Log("ganaste");

@@ -33,6 +33,11 @@ public class Control : MonoBehaviour, IControl
             PhotonView photonView = PhotonView.Get(this);
             photonView.RPC("CollectCoin", RpcTarget.AllBuffered, collision.gameObject.GetComponent<PhotonView>().ViewID);
         }
+
+        if(pv.IsMine && collision.transform.CompareTag("WinDoor"))
+        {
+            GameManager.Instance.CheckWin();
+        }
     }
 
     public void GetInputs()

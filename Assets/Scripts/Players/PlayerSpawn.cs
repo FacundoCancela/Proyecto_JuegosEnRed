@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private List<Transform> spawnPoints;
 
     private GameObject player;
@@ -41,8 +41,9 @@ public class PlayerSpawn : MonoBehaviour
     private void SpawnPlayer(int playerIndex)
     {
         int spawnIndex = Mathf.Clamp(playerIndex, 0, spawnPoints.Count - 1);
+        int prefabIndex = Mathf.Clamp(playerIndex, 0, playerPrefabs.Count - 1);
 
-        player = PhotonNetwork.Instantiate(playerPrefab.name,
+        player = PhotonNetwork.Instantiate(playerPrefabs[prefabIndex].name,
                         spawnPoints[spawnIndex].position,
                         Quaternion.identity);
     }
