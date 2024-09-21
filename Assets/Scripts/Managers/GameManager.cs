@@ -53,8 +53,15 @@ public class GameManager : MonoBehaviour
 
     public void LoseHealth()
     {
+        pv.RPC("LoseHealthRPC", RpcTarget.AllBuffered);
+    }
+
+
+    [PunRPC]
+    public void LoseHealthRPC()
+    {
         lifes--;
-        pv.RPC("UpdateHearts", RpcTarget.AllBuffered);
+        UpdateHearts();
         CheckLose();
     }
 

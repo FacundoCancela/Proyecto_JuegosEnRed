@@ -14,10 +14,16 @@ public class Actor : MonoBehaviour, IActor
     private bool isGrounded = true;
     private bool canJump = true;
 
+    private Vector3 spawnPoint;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        spawnPoint = transform.position;
     }
 
     private void Update()
@@ -45,5 +51,11 @@ public class Actor : MonoBehaviour, IActor
             }
             _rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
+    }
+
+    public void Respawn()
+    {
+        transform.position = spawnPoint;
+        _rb.velocity = Vector2.zero;
     }
 }
