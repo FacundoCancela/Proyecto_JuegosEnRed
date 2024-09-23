@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
         if (coinsToWin <= 0)
         {
             pv.RPC("Win", RpcTarget.AllBuffered);
+            LevelDataManager.Instance.NextLevel();
         }
         else
         {

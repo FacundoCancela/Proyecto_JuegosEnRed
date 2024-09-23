@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class LevelManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] private List<Button> levelButtons;
@@ -18,6 +17,12 @@ public class LevelManager : MonoBehaviourPunCallbacks
             int index = i;
             levelButtons[i].onClick.AddListener(() => JoinLevel(index));
         }
+
+    }
+
+    private void Start()
+    {
+        UpdateButtonInteractivity();
     }
 
     private void OnDestroy()
@@ -26,14 +31,22 @@ public class LevelManager : MonoBehaviourPunCallbacks
         {
             button.onClick.RemoveAllListeners();
         }
-
     }
 
     private void JoinLevel(int index)
     {
-        if (PhotonNetwork.IsMasterClient)
+        int maxLevelReached = LevelDataManager.Instance.levelData.maxLevelReached - 1;
+
+        if (index <= maxLevelReached)
         {
-            photonView.RPC("LoadLevel", RpcTarget.All, levelNames[index]);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                photonView.RPC("LoadLevel", RpcTarget.All, levelNames[index]);
+            }
+        }
+        else
+        {
+            Debug.Log("No tienes acceso a este nivel. Desbloquea más niveles para acceder.");
         }
     }
 
@@ -43,4 +56,17 @@ public class LevelManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel(levelName);
     }
 
+    private void UpdateButtonInteractivity()
+    {
+        int maxLevelReached = LevelDataManager.Instance.levelData.maxLevelReached - 1;
+
+        for (int i = 0; i < levelButtons.Count; i++)
+        {
+
+            if (i > maxLevelReached)
+            {
+                levelButtons[i].interactable = false;
+            }
+        }
+    }
 }
