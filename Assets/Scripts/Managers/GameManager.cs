@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Canvas winScreen;
     [SerializeField] public Canvas loseScreen;
 
+    [SerializeField] public int actualLevel;
+
     public bool isGamePaused = false;
 
 
@@ -102,7 +104,10 @@ public class GameManager : MonoBehaviour
         if (coinsToWin <= 0)
         {
             pv.RPC("Win", RpcTarget.AllBuffered);
-            LevelDataManager.Instance.NextLevel();
+            if(actualLevel == LevelDataManager.Instance.levelData.maxLevelReached)
+            {
+                LevelDataManager.Instance.NextLevel();
+            }
         }
         else
         {

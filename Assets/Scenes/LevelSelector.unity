@@ -1675,8 +1675,8 @@ MonoBehaviour:
   - {fileID: 465604654}
   - {fileID: 607621498}
   levelNames:
-  - Level1
-  - Level2
+  - TestLevel1
+  - TestLevel2
 --- !u!114 &769124991
 MonoBehaviour:
   m_ObjectHideFlags: 0
