@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpPower: 7
+  jumpPower: 2
   _rb: {fileID: 0}
   groundLayer:
     serializedVersion: 2
