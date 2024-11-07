@@ -10,17 +10,26 @@ public class Leaver : MonoBehaviour
     public Vector2 moveDirection;
     public float moveDistance;
     public float moveSpeed;
+
+    public Sprite leaverOnSprite;
+    public Sprite leaverOffSprite;
+    private SpriteRenderer spriteRenderer;
+
     private bool isActivable = false;
     private bool isMoving = false;
     private bool moveForward = true;
     private Vector3 targetPosition;
 
-
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = leaverOffSprite;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PhotonView pv = collision.gameObject.GetComponent<PhotonView>();
-        if (pv != null && pv.IsMine && collision.gameObject.CompareTag("Player"))
+        if (pv != null && pv.IsMine && collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Player2"))
         {
             isActivable = true;
         }
@@ -28,7 +37,7 @@ public class Leaver : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         PhotonView pv = collision.gameObject.GetComponent<PhotonView>();
-        if (pv != null && pv.IsMine && collision.gameObject.CompareTag("Player"))
+        if (pv != null && pv.IsMine && collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Player2"))
         {
             isActivable = false;
         }
@@ -48,6 +57,7 @@ public class Leaver : MonoBehaviour
     private IEnumerator MoveObject()
     {
         isMoving = true;
+        spriteRenderer.sprite = leaverOnSprite;
         while (Vector3.Distance(objectToMove.position, targetPosition) > 0.01f)
         {
             objectToMove.position = Vector3.MoveTowards(objectToMove.position, targetPosition, moveSpeed * Time.deltaTime);
@@ -55,6 +65,7 @@ public class Leaver : MonoBehaviour
         }
         objectToMove.position = targetPosition;
         isMoving = false;
+        spriteRenderer.sprite = leaverOffSprite;
     }
 
 }

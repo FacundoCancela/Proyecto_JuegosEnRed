@@ -4,14 +4,13 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     public enum PlayerEnum { Player, Player2 }
-    public PlayerEnum playerType; // Asignado en el Inspector
+    public PlayerEnum playerType; 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PhotonView pv = collision.gameObject.GetComponent<PhotonView>();
         if (pv != null && pv.IsMine)
         {
-            // Condicional para comprobar qué jugador puede recoger la moneda
             if (playerType == PlayerEnum.Player && collision.gameObject.CompareTag("Player"))
             {
                 Collect(collision);

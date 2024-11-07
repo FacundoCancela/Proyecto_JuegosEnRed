@@ -48,6 +48,7 @@ public class Actor : MonoBehaviour, IActor
             {
                 canJump = false;
             }
+            _rb.velocity = new Vector2(_rb.velocity.x, 0);
             _rb.AddForce(Vector2.up * playerStats.jumpPower, ForceMode2D.Impulse);
         }
     }
