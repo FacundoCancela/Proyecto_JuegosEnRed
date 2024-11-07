@@ -1674,9 +1674,11 @@ MonoBehaviour:
   levelButtons:
   - {fileID: 465604654}
   - {fileID: 607621498}
+  - {fileID: 335625052}
   levelNames:
   - Level1
-  - TestLevel2
+  - Level2
+  - Level3
 --- !u!114 &769124991
 MonoBehaviour:
   m_ObjectHideFlags: 0
