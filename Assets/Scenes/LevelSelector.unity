@@ -1675,7 +1675,7 @@ MonoBehaviour:
   - {fileID: 465604654}
   - {fileID: 607621498}
   levelNames:
-  - TestLevel1
+  - Level1
   - TestLevel2
 --- !u!114 &769124991
 MonoBehaviour:

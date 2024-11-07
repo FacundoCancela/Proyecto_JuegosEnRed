@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5519671891953507426}
   - component: {fileID: -5573315319810620036}
   m_Layer: 8
-  m_Name: LavaPit
+  m_Name: Pinchos
   m_TagString: WinDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
