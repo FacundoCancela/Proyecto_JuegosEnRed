@@ -31,10 +31,10 @@ public class Cuerda : MonoBehaviour
     void CollectRope(int ropeViewID)
     {
         GameManager.Instance.GetRope();
-        PhotonView coinPhotonView = PhotonView.Find(ropeViewID);
-        if (coinPhotonView != null && PhotonNetwork.IsMasterClient)
+        PhotonView ropePhotonView = PhotonView.Find(ropeViewID);
+        if (ropePhotonView != null && PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.Destroy(coinPhotonView.gameObject);
+            PhotonNetwork.Destroy(ropePhotonView.gameObject);
         }
     }
 
