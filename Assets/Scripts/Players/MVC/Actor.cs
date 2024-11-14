@@ -58,4 +58,14 @@ public class Actor : MonoBehaviour, IActor
         transform.position = spawnPoint;
         _rb.velocity = Vector2.zero;
     }
+
+    private void OnDrawGizmos()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+    }
+
 }
