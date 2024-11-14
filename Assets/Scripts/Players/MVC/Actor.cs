@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Actor : MonoBehaviour, IActor
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float jumpPower;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.1f;
+    [SerializeField] PlayerStats playerStats;
 
     private bool isGrounded = true;
     private bool canJump = true;
@@ -37,7 +36,7 @@ public class Actor : MonoBehaviour, IActor
 
     public void Move(Vector2 dir)
     {
-        Vector2 velocity = new Vector2(dir.x * speed, _rb.velocity.y);
+        Vector2 velocity = new Vector2(dir.x * playerStats.speed, _rb.velocity.y);
         _rb.velocity = velocity;
     }
 
@@ -49,7 +48,8 @@ public class Actor : MonoBehaviour, IActor
             {
                 canJump = false;
             }
-            _rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            _rb.velocity = new Vector2(_rb.velocity.x, 0);
+            _rb.AddForce(Vector2.up * playerStats.jumpPower, ForceMode2D.Impulse);
         }
     }
 

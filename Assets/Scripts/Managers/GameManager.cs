@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public bool isGamePaused = false;
 
+    [SerializeField] public bool hasRope;
+
 
     private void Awake()
     {
@@ -51,6 +53,15 @@ public class GameManager : MonoBehaviour
         UpdateCoinText(count);
         coinsToWin = coins.Count;
         UpdateHearts();
+    }
+
+    public void GetRope()
+    {
+        hasRope = true;
+    }
+    public void LoseRope()
+    {
+        hasRope = false;
     }
 
     public void LoseHealth()
@@ -90,7 +101,6 @@ public class GameManager : MonoBehaviour
     {
         count++;
         coinsToWin--;
-        Debug.Log("monedas:" + count);
         UpdateCoinText(count);
     }
 

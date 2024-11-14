@@ -7,11 +7,12 @@ TagManager:
   - Coin
   - WinDoor
   - Player2
+  - Trap
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Floor

@@ -10,6 +10,7 @@ public class Control : MonoBehaviour, IControl
     [SerializeField] private IActor _playerModel;
     [SerializeField] private IView _playerView;
     [SerializeField] PhotonView pv;
+    [SerializeField] GameObject _casco;
 
     private void Awake()
     {
@@ -37,5 +38,19 @@ public class Control : MonoBehaviour, IControl
         float x = Input.GetAxis("Horizontal");
         Vector2 dir = new Vector2(x, 0).normalized;
         _playerModel.Move(dir);
+    }
+
+    public void ActivarCasco()
+    {
+        if (pv.IsMine)
+        {
+            pv.RPC("RPC_ActivarCasco", RpcTarget.AllBuffered);
+        }
+    }
+
+    [PunRPC]
+    void RPC_ActivarCasco()
+    {
+        _casco.SetActive(true);
     }
 }
