@@ -55,6 +55,7 @@ MonoBehaviour:
   - CollectRope
   - CollectCasco
   - RPC_ActivarCasco
+  - ActivateBridge
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3256105906509423817}
   - component: {fileID: 2732394094077188654}
   - component: {fileID: 3473594310916357797}
-  m_Layer: 0
+  - component: {fileID: 6349546648654954464}
+  m_Layer: 6
   m_Name: Soga
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,6 +131,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6349546648654954464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28205389604471474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1201734049356909146
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +164,8 @@ GameObject:
   - component: {fileID: 6574180229968053688}
   - component: {fileID: 803006354852756194}
   - component: {fileID: 5699277592038531865}
+  - component: {fileID: 6520098701658293040}
+  - component: {fileID: 4570729919567114691}
   m_Layer: 0
   m_Name: Bandera1
   m_TagString: Untagged
@@ -260,6 +285,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.7953835}
   m_EdgeRadius: 0
+--- !u!114 &6520098701658293040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201734049356909146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f4b01e5bbab394fb2233155a4a1d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bridge: {fileID: 28205389604471474}
+--- !u!114 &4570729919567114691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201734049356909146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3464955091992142982
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +331,8 @@ GameObject:
   - component: {fileID: 4327565675907281598}
   - component: {fileID: 6473946149342721873}
   - component: {fileID: 2774928191363626384}
+  - component: {fileID: 1934474942138534259}
+  - component: {fileID: 5928577284411347043}
   m_Layer: 0
   m_Name: Bandera2
   m_TagString: Untagged
@@ -390,6 +452,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.7953835}
   m_EdgeRadius: 0
+--- !u!114 &1934474942138534259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464955091992142982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f4b01e5bbab394fb2233155a4a1d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bridge: {fileID: 28205389604471474}
+--- !u!114 &5928577284411347043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464955091992142982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7608069184507017231
 GameObject:
   m_ObjectHideFlags: 0

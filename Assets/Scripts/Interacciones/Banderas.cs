@@ -12,7 +12,8 @@ public class Banderas : MonoBehaviour
     {
         if (playerEnBandera && Input.GetKeyDown(KeyCode.F) && GameManager.Instance.hasRope)
         {
-            ActivateBridge();
+            PhotonView pv = PhotonView.Get(this);
+            pv.RPC("ActivateBridge", RpcTarget.All);
             GameManager.Instance.LoseRope();
         }
     }
@@ -35,6 +36,8 @@ public class Banderas : MonoBehaviour
         }
     }
 
+
+    [PunRPC]
     void ActivateBridge()
     {
         bridge.SetActive(true);
